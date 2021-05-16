@@ -1,15 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xamforms="clr-namespace:Shiny.XamForms;assembly=Shiny.Framework"
+             xmlns:samples="clr-namespace:Samples"
+             x:DataType="samples:MainViewModel"
              x:Class="Samples.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout>
-        <Button Text="HI" Command="{Binding Button}" />
+    <ScrollView>
+        <StackLayout>
 
-        <Button Text="MSAL Sign-In" Command="{Binding MsalSignIn}" />
-        <Button Text="MSAL Sign-Out" Command="{Binding MsalSignOut}" />
-        <Button Text="MSAL Refresh" Command="{Binding MsalRefresh}" />
-    </StackLayout>
+            <Button Text="HI" Command="{Binding Button}" />
+
+            <Button Text="MSAL Sign-In" Command="{Binding MsalSignIn}" />
+            <Button Text="MSAL Sign-Out" Command="{Binding MsalSignOut}" />
+            <Button Text="MSAL Refresh" Command="{Binding MsalRefresh}" />
+
+            <Entry Text="{Binding Text1}" x:Name="txt1" BackgroundColor="{Binding Text1Color}">
+                <Entry.Behaviors>
+                    <xamforms:EntryFocusBindBehavior IsFocused="{Binding Text1IsFocused}" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry Text="{Binding Text2}" x:Name="txt2" BackgroundColor="{Binding Text2Color}">
+                <Entry.Behaviors>
+                    <xamforms:EntryFocusBindBehavior IsFocused="{Binding Text2IsFocused}" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Button Text="Toggle Focus 1" Command="{Binding Toggle1}" />
+            <Button Text="Toggle Focus 2" Command="{Binding Toggle2}" />
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>
